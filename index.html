@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Amiga-joystick-rpi : Connect your old Amiga joystick to a Raspberry">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Amiga-joystick-rpi</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/mlesniew/amiga-joystick-rpi">View on GitHub</a>
+
+          <h1 id="project_title">Amiga-joystick-rpi</h1>
+          <h2 id="project_tagline">Connect your old Amiga joystick to a Raspberry</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/mlesniew/amiga-joystick-rpi/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/mlesniew/amiga-joystick-rpi/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="amiga-joystick-rpi" class="anchor" href="#amiga-joystick-rpi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>amiga-joystick-rpi</h1>
+
+<p>Connect your old Amiga joystick to a Raspberry</p>
+
+<p><img src="img/1.jpg" alt="Image"></p>
+
+<h1>
+<a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How it works</h1>
+
+<p>The <code>amiga-joystick.py</code> script reads data from RPi GPIO pins and translates
+them to Linux input events.  You don't need any special drivers or additional
+software to run it -- the only requirement is the python-uinput module.</p>
+
+<h1>
+<a id="connecting-the-joystick" class="anchor" href="#connecting-the-joystick" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Connecting the joystick</h1>
+
+<p>To use the script you'll need to connect the Amiga joystick to the Raspberry
+GPIOs.  The Amiga joystick port is simply a female DE-9 (aka Serial Port)
+connector.  There are 6 data lines (4 directions and 2 buttons) -- these need
+to be connected to the GPIOs.  Besides that there is a ground pin and a power
+supply (+5V) pin.  The power pin is optional, most joysticks only need it for
+autofire.</p>
+
+<p>Suggested connection of DE-9 pins to GPIOs (BCM numbering):</p>
+
+<ul>
+<li>pin 1 -- forward -- GPIO 6</li>
+<li>pin 2 -- back -- GPIO 13</li>
+<li>pin 3 -- left -- GPIO 19</li>
+<li>pin 4 -- right -- GPIO 26</li>
+<li>pin 5 -- not used</li>
+<li>pin 6 -- button 1 (fire) -- GPIO 20</li>
+<li>pin 7 -- power supply +5V</li>
+<li>pin 8 -- ground</li>
+<li>pin 9 -- button 2 -- GPIO 21</li>
+</ul>
+
+<p>If you'd like to use different GPIO pins, change the <code>CHANNELS</code> mapping in the
+<code>amiga-joystick.py</code> script.</p>
+
+<h1>
+<a id="event-mapping" class="anchor" href="#event-mapping" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Event mapping</h1>
+
+<p>By default, the Amiga Joystick is detected as a keyboard.  Joystick movement is
+translated to arrow keys, button A (fire) is translated to left CTRL, button B
+(often unused) is translated to left shift.  This mapping allows playing Amiga
+games on RetroPie with the uae4all2 emulator.</p>
+
+<p>Again, if you'd like to map the joystick directions or buttons to different
+keys, change the <code>CHANNELS</code> mapping in the <code>amiga-joystick.py</code> script.</p>
+
+<h1>
+<a id="running-the-script" class="anchor" href="#running-the-script" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running the script</h1>
+
+<p>After you've connected everything, you can simply start the script from the
+command line as root:</p>
+
+<pre><code>sudo ./amiga-joystick.py
+</code></pre>
+
+<p>You can also make the script run automatically on startup by adding the
+following line to <code>/etc/rc.local</code>:</p>
+
+<pre><code>/some/path/amiga-joystick.py &amp;
+</code></pre>
+
+<h1>
+<a id="more-pictures" class="anchor" href="#more-pictures" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>More Pictures</h1>
+
+<p><img src="img/2.jpg" alt="Image">
+<img src="img/3.jpg" alt="Image">
+<img src="img/4.jpg" alt="Image"></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Amiga-joystick-rpi maintained by <a href="https://github.com/mlesniew">mlesniew</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
