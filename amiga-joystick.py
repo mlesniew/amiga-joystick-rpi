@@ -81,7 +81,7 @@ def main():
     thread.start()
     # wait forever
     while True:
-        input()
+        time.sleep(24 * 60 * 60)
 
 
 if __name__ == "__main__":
