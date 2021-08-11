@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import time
 import threading
@@ -6,21 +6,20 @@ import threading
 try:
     import uinput
 except ImportError:
-    raise SystemExit('uinput module missing -- to install run "sudo apt-get install python-uinput"')
+    raise SystemExit('uinput module missing -- to install run "sudo apt install python3-uinput"')
 
-import RPi.GPIO as GPIO
 
 # this is the mapping of GPIO numbers (in BCM mode) to key codes
 CHANNELS = {
-        6: uinput.KEY_UP,
-        13: uinput.KEY_DOWN,
-        19: uinput.KEY_LEFT,
-        26: uinput.KEY_RIGHT,
-        20: uinput.KEY_LEFTCTRL,       # button A
-        21: uinput.KEY_LEFTALT,        # button B
-    }
+    6: uinput.KEY_UP,
+    13: uinput.KEY_DOWN,
+    19: uinput.KEY_LEFT,
+    26: uinput.KEY_RIGHT,
+    20: uinput.KEY_LEFTCTRL,  # button A
+    21: uinput.KEY_LEFTALT,  # button B
+}
 
-KEYS = CHANNELS.values()
+KEYS = list(CHANNELS.values())
 
 # Debounce time in seconds
 BOUNCETIME = 1.0 / 100
@@ -29,9 +28,9 @@ BOUNCETIME = 1.0 / 100
 def capture_keys():
     GPIO.setmode(GPIO.BCM)
 
-    with uinput.Device(KEYS, name='amiga-joystick') as device:
+    with uinput.Device(KEYS, name="amiga-joystick") as device:
         # current state of all buttons
-        state = { ch: False for ch in CHANNELS }
+        state = {ch: False for ch in CHANNELS}
 
         condition = threading.Condition()
         inputs_changed = set()
@@ -76,10 +75,10 @@ def main():
     thread.start()
     # wait forever
     while True:
-        raw_input()
+        input()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
