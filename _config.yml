@@ -1,0 +1,8 @@
+title: Amiga-joystick-rpi
+description: Connect your old Amiga joystick to a Raspberry
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-slate
+
+gems:
+  - jekyll-mentions
