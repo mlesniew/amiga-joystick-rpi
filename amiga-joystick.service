@@ -1,0 +1,10 @@
+[Unit]
+Description=Amiga Joystick input service
+Documentation=https://mlesniew.github.io/amiga-joystick-rpi/
+
+[Service]
+ExecStart=/usr/local/bin/amiga-joystick.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
