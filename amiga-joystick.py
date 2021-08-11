@@ -8,6 +8,11 @@ try:
 except ImportError:
     raise SystemExit('uinput module missing -- to install run "sudo apt install python3-uinput"')
 
+try:
+    import RPi.GPIO as GPIO
+except ImportError:
+    raise SystemExit('RPi.GPIO module missing -- to install run "sudo apt install rpi.gpio"')
+
 
 # this is the mapping of GPIO numbers (in BCM mode) to key codes
 CHANNELS = {
