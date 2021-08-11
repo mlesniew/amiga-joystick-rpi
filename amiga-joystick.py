@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-import time
+import subprocess
 import threading
+import time
 
 try:
     import uinput
@@ -85,6 +86,7 @@ def main():
 
 if __name__ == "__main__":
     try:
+        subprocess.check_call(["modprobe", "uinput"])
         main()
     except KeyboardInterrupt:
         raise SystemExit
